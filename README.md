@@ -1,5 +1,5 @@
 ---------------------------------------
-# PallyConAMSv3DotnetSample
+# PallyCon AMS DRM Packaging Sample
 This sample shows how to integrate PallyCon Multi DRM with AMS(Azure Media Services) v3 using [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download). Since this sample focused on DRM integration, only the simple VOD packaging scenario of AMS is used here, see the [AMS SDK link](https://github.com/Azure-Samples/media-services-v3-dotnet) for more information on AMS features.
 > There are two scenario can be run in this sample.
 > 1. DASH_PlayreadyAndWidevine
@@ -55,5 +55,5 @@ bool PallyConKmsClientWrapper::getDashAndHlsPackagingInfoFromKmsServer(String^ c
 ## References
 - https://pallycon.com/docs/en/multidrm/
 - https://pallycon.com/docs/en/multidrm/packaging/cpix-api/
-- https://learn.microsoft.com/ko-kr/azure/media-services/
+- https://learn.microsoft.com/azure/media-services/
 ---------------------------------------
