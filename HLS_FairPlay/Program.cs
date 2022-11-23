@@ -19,8 +19,8 @@ namespace PallyCon
         private const string SourceUri = "";    // Your content
         private static readonly string ContentId = "";  // Your content id
         private static readonly string DefaultStreamingEndpointName = "default";     // Change this to your Endpoint name.
-        private static readonly string StreamingPolicyName = "customStreamingPolicy";
-        private static readonly string LabelCbcs = "cbcsKeyDefault";
+        private static readonly string StreamingPolicyName = "cbcsStreamingPolicy";
+        private static readonly string LabelDefaultKey = "cbcsKeyDefault";
         public static async Task Main(string[] args)
         {
 
@@ -97,7 +97,7 @@ namespace PallyCon
                 {
                     string hls_key_uri = "";
                     var cbcsKey = PallyConHelper.GetCbcsKeyFromPallyCon(config.PallyConKmsUrl, config.PallyConEncToken, ContentId, ref hls_key_uri);
-                    cbcsKey.LabelReferenceInStreamingPolicy = LabelCbcs;
+                    cbcsKey.LabelReferenceInStreamingPolicy = LabelDefaultKey;
 
                     // Create the streaming policy
                     StreamingPolicy streamingPolicy = await GetOrCreateStreamingPolicyAsync(client, config.ResourceGroup, config.AccountName
@@ -349,7 +349,7 @@ namespace PallyCon
                             //Default key must be specified if keyToTrackMappings is present
                             DefaultKey = new DefaultKey()
                             {
-                                Label = LabelCbcs
+                                Label = LabelDefaultKey
                             }
                         }
                     }

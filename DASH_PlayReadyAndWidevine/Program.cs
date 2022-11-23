@@ -19,8 +19,8 @@ namespace PallyCon
         private const string SourceUri = "";    // Your content
         private static readonly string ContentId = "";  // Your content id
         private static readonly string DefaultStreamingEndpointName = "default";    // Change this to your Endpoint name.
-        private static readonly string StreamingPolicyName = "customStreamingPolicy";
-        private static readonly string LabelCenc = "cencKeyDefault";
+        private static readonly string StreamingPolicyName = "cencStreamingPolicy";
+        private static readonly string LabelDefaultKey = "cencKeyDefault";
         public static async Task Main(string[] args)
         {
 
@@ -96,7 +96,7 @@ namespace PallyCon
                 if (job.State == JobState.Finished)
                 {
                     var cencKey = PallyConHelper.GetCencKeyFromPallyCon(config.PallyConKmsUrl, config.PallyConEncToken, ContentId);
-                    cencKey.LabelReferenceInStreamingPolicy = LabelCenc;
+                    cencKey.LabelReferenceInStreamingPolicy = LabelDefaultKey;
 
                     // Create the streaming policy
                     StreamingPolicy streamingPolicy = await GetOrCreateStreamingPolicyAsync(client, config.ResourceGroup, config.AccountName
@@ -354,7 +354,7 @@ namespace PallyCon
                             //Default key must be specified if keyToTrackMappings is present
                             DefaultKey = new DefaultKey()
                             {
-                                Label = LabelCenc
+                                Label = LabelDefaultKey
                             }
                         }
                     }
